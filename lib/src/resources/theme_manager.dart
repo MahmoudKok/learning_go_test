@@ -158,7 +158,7 @@ class AppThemes {
           fontWeight: FontWeightManager.light,
           color: LightColorsManager().white,
         ),
-        backgroundColor: LightColorsManager().mediumSeaGreen,
+        backgroundColor: LightColorsManager().primary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.r),
         ),
@@ -166,62 +166,61 @@ class AppThemes {
     ),
 
     //text theme
-    textTheme:
-        TextTheme(
-          headlineLarge: TextStyle(
-            fontSize: 20.sp,
-            fontWeight: FontWeightManager.extraBold,
-            color: LightColorsManager().scrim,
-          ),
-          displayLarge: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeightManager.bold,
-            color: LightColorsManager().darkest,
-          ),
-          titleLarge: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeightManager.semiBold,
-            color: LightColorsManager().darkest,
-          ),
-          bodyLarge: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeightManager.medium,
-            color: LightColorsManager().darkest,
-          ),
-          displayMedium: TextStyle(
-            fontSize: 13.sp,
-            fontWeight: FontWeightManager.medium,
-            color: LightColorsManager().darkest,
-          ),
-          bodyMedium: TextStyle(
-            fontSize: 13.sp,
-            fontWeight: FontWeightManager.medium,
-            color: LightColorsManager().darkest,
-          ),
-          titleMedium: TextStyle(
-            fontSize: 13.sp,
-            fontWeight: FontWeightManager.regular,
-            color: LightColorsManager().darker,
-          ),
-          displaySmall: TextStyle(
-            fontSize: 12.sp,
-            fontWeight: FontWeightManager.regular,
-            color: LightColorsManager().darker,
-          ),
-          titleSmall: TextStyle(
-            fontSize: 10.sp,
-            fontWeight: FontWeightManager.light,
-            color: LightColorsManager().darker,
-          ),
-        ).apply(
-          fontFamily: AppLanguages.isArabic ? AppFonts.rubik : AppFonts.nunito,
-        ),
+    textTheme: TextTheme(
+      headlineLarge: TextStyle(
+        fontSize: 20.sp,
+        fontWeight: FontWeightManager.extraBold,
+        color: LightColorsManager().scrim,
+      ),
+      displayLarge: TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeightManager.bold,
+        color: LightColorsManager().darkest,
+      ),
+      titleLarge: TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeightManager.semiBold,
+        color: LightColorsManager().darkest,
+      ),
+      bodyLarge: TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeightManager.medium,
+        color: LightColorsManager().darkest,
+      ),
+      displayMedium: TextStyle(
+        fontSize: 13.sp,
+        fontWeight: FontWeightManager.medium,
+        color: LightColorsManager().darkest,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 13.sp,
+        fontWeight: FontWeightManager.medium,
+        color: LightColorsManager().darkest,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 13.sp,
+        fontWeight: FontWeightManager.regular,
+        color: LightColorsManager().darker,
+      ),
+      displaySmall: TextStyle(
+        fontSize: 12.sp,
+        fontWeight: FontWeightManager.regular,
+        color: LightColorsManager().darker,
+      ),
+      titleSmall: TextStyle(
+        fontSize: 10.sp,
+        fontWeight: FontWeightManager.light,
+        color: LightColorsManager().darker,
+      ),
+    ).apply(fontFamily: AppFonts.poppins),
 
     //input decoration theme (Text Form Field)
     inputDecorationTheme: InputDecorationTheme(
       // constraints: BoxConstraints(maxHeight: 50.h),
       //content padding
       //hint style
+      hoverColor: Colors.transparent,
+
       hintStyle: TextStyle(
         fontSize: 15.sp,
         fontWeight: FontWeightManager.light,
@@ -240,7 +239,7 @@ class AppThemes {
         fontSize: 16.sp,
         fontWeight: FontWeightManager.light,
         color: LightColorsManager().red,
-        fontFamily: AppFonts.rubik,
+        fontFamily: AppFonts.poppins,
       ),
 
       errorMaxLines: 1,
@@ -671,7 +670,7 @@ class AppThemes {
           fontWeight: FontWeightManager.light,
           color: DarkColorsManager().white,
         ),
-        backgroundColor: DarkColorsManager().mediumSeaGreen,
+        backgroundColor: DarkColorsManager().primary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.r),
         ),
@@ -679,56 +678,53 @@ class AppThemes {
     ),
 
     //text theme
-    textTheme:
-        TextTheme(
-          headlineLarge: TextStyle(
-            fontSize: 20.sp,
-            fontWeight: FontWeightManager.extraBold,
-            color: DarkColorsManager().scrim,
-          ),
-          displayLarge: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeightManager.bold,
-            color: DarkColorsManager().darkest,
-          ),
-          titleLarge: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeightManager.semiBold,
-            color: DarkColorsManager().darkest,
-          ),
-          bodyLarge: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeightManager.medium,
-            color: DarkColorsManager().darkest,
-          ),
-          displayMedium: TextStyle(
-            fontSize: 13.sp,
-            fontWeight: FontWeightManager.medium,
-            color: DarkColorsManager().darkest,
-          ),
-          bodyMedium: TextStyle(
-            fontSize: 13.sp,
-            fontWeight: FontWeightManager.medium,
-            color: DarkColorsManager().darkest,
-          ),
-          titleMedium: TextStyle(
-            fontSize: 13.sp,
-            fontWeight: FontWeightManager.regular,
-            color: DarkColorsManager().darker,
-          ),
-          displaySmall: TextStyle(
-            fontSize: 12.sp,
-            fontWeight: FontWeightManager.regular,
-            color: DarkColorsManager().darker,
-          ),
-          titleSmall: TextStyle(
-            fontSize: 10.sp,
-            fontWeight: FontWeightManager.light,
-            color: DarkColorsManager().darker,
-          ),
-        ).apply(
-          fontFamily: AppLanguages.isArabic ? AppFonts.rubik : AppFonts.nunito,
-        ),
+    textTheme: TextTheme(
+      headlineLarge: TextStyle(
+        fontSize: 20.sp,
+        fontWeight: FontWeightManager.extraBold,
+        color: DarkColorsManager().scrim,
+      ),
+      displayLarge: TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeightManager.bold,
+        color: DarkColorsManager().darkest,
+      ),
+      titleLarge: TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeightManager.semiBold,
+        color: DarkColorsManager().darkest,
+      ),
+      bodyLarge: TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeightManager.medium,
+        color: DarkColorsManager().darkest,
+      ),
+      displayMedium: TextStyle(
+        fontSize: 13.sp,
+        fontWeight: FontWeightManager.medium,
+        color: DarkColorsManager().darkest,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 13.sp,
+        fontWeight: FontWeightManager.medium,
+        color: DarkColorsManager().darkest,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 13.sp,
+        fontWeight: FontWeightManager.regular,
+        color: DarkColorsManager().darker,
+      ),
+      displaySmall: TextStyle(
+        fontSize: 12.sp,
+        fontWeight: FontWeightManager.regular,
+        color: DarkColorsManager().darker,
+      ),
+      titleSmall: TextStyle(
+        fontSize: 10.sp,
+        fontWeight: FontWeightManager.light,
+        color: DarkColorsManager().darker,
+      ),
+    ).apply(fontFamily: AppFonts.poppins),
 
     //input decoration theme (Text Form Field)
     inputDecorationTheme: InputDecorationTheme(
@@ -736,6 +732,7 @@ class AppThemes {
 
       //content padding
       //hint style
+      hoverColor: Colors.transparent,
       hintStyle: TextStyle(
         fontSize: 15.sp,
         fontWeight: FontWeightManager.light,

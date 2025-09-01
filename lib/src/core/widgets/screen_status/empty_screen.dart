@@ -17,8 +17,8 @@ class EmptyScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           24.verticalSpace,
-          image?.asImageAssets(width: 200.w, height: 200.h) ??
-              AppImages.emptyScreen.asImageAssets(width: 150.w, height: 150.h),
+          // image?.asImageAssets(width: 200.w, height: 200.h) ??
+          //     AppImages.emptyScreen.asImageAssets(width: 150.w, height: 150.h),
           24.verticalSpace,
           Text(
             text ?? 'There is no items',

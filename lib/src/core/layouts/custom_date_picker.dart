@@ -27,7 +27,7 @@ Future<DateTime?> customDatePicker(
             onSurface: mainColor ?? colorProvider.primary, // Body text color
           ),
 
-          textTheme: const TextTheme().apply(fontFamily: AppFonts.nunito),
+          textTheme: const TextTheme().apply(fontFamily: AppFonts.poppins),
 
           // dropdownMenuTheme: DropdownMenuThemeData(
           //   inputDecorationTheme: InputDecorationTheme(
@@ -55,11 +55,11 @@ Future<DateTime?> customDatePicker(
             headerForegroundColor:
                 colorProvider.onPrimary, // Header text color (month/year text)
             weekdayStyle: TextStyle(
-              fontFamily: AppFonts.nunito,
+              fontFamily: AppFonts.poppins,
               color: mainColor ?? colorProvider.primary,
             ), // Weekday labels color (Sun, Mon, etc.)
             dayStyle: TextStyle(
-              fontFamily: AppFonts.nunito,
+              fontFamily: AppFonts.poppins,
               color: colorProvider.darkest,
             ), // Day numbers default color
             todayForegroundColor: WidgetStatePropertyAll(
@@ -73,7 +73,7 @@ Future<DateTime?> customDatePicker(
             // selectedForegroundColor: colorProvider.onPrimary, // Selected date text color
             // selectedBackgroundColor: mainColor, // Selected date background color
             yearStyle: TextStyle(
-              fontFamily: AppFonts.nunito,
+              fontFamily: AppFonts.poppins,
               color: colorProvider.darkest,
               fontWeight: FontWeight.bold,
             ), // Year options text style

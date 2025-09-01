@@ -36,10 +36,10 @@ class ErrorScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           24.verticalSpace,
-          AppImages.errorScreen.asImageAssets(
-            width: imageWidth ?? 150.w,
-            height: imageHeight ?? 150.h,
-          ),
+          // AppImages.errorScreen.asImageAssets(
+          //   width: imageWidth ?? 150.w,
+          //   height: imageHeight ?? 150.h,
+          // ),
           8.verticalSpace,
           Text(
             'Oops....',

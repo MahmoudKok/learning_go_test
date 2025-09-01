@@ -1,7 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:learning_go_test/src/resources/color_provider.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../generated/locale_keys.g.dart';
 
 class AppMessages {
   static showSuccess({
@@ -24,11 +27,13 @@ class AppMessages {
   }
 
   static showError({
-    required String message,
+    required String? message,
     Color color = const Color(0xFFF91717),
   }) {
     BotToast.showText(
-      text: message,
+      text:
+          message ??
+          LocaleKeys.something_went_wrong_please_try_again_later.tr(),
       contentColor: color,
       onlyOne: true,
       textStyle: TextStyle(

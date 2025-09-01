@@ -1,4 +1,3 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 
@@ -7,62 +6,64 @@ import '../../logger/dev_logger.dart';
 @LazySingleton()
 class SecureStorageServices {
   final FlutterSecureStorage _storage;
-  final String _pinKey;
+  final String _accessKey = 'access_token';
+  final String _refreshKey = 'refresh_token';
 
-  bool _isHavePin = false;
+  String? _accessToken;
+  String? _refreshToken;
 
-  SecureStorageServices()
-    : _storage = const FlutterSecureStorage(),
-      _pinKey = dotenv.get('APP_PASSWORD', fallback: 'app_pin_default');
+  String? get token => _accessToken;
+  String? get refreshToken => _refreshToken;
 
-  /// Initializes the service by checking if a PIN exists
+  SecureStorageServices() : _storage = const FlutterSecureStorage();
+
   Future<void> init() async {
-    _isHavePin = await hasPin();
+    _accessToken = await loadAccessToken();
+    _refreshToken = await loadRefreshToken();
   }
 
-  /// Getter for whether a PIN is set
-  bool get isHavePin => _isHavePin;
-
-  /// Loads the PIN from secure storage
-  Future<String?> loadPin() async {
+  Future<void> saveTokens({
+    required String accessToken,
+    required String refreshToken,
+  }) async {
     try {
-      final storedPin = await _storage.read(key: _pinKey);
-      return storedPin;
+      await _storage.write(key: _accessKey, value: accessToken);
+      await _storage.write(key: _refreshKey, value: refreshToken);
+      _accessToken = accessToken;
+      _refreshToken = refreshToken;
     } catch (e) {
-      Dev.logError('Error loading PIN: $e');
+      Dev.logError('Error saving tokens: $e');
+    }
+  }
+
+  Future<String?> loadAccessToken() async {
+    try {
+      final token = await _storage.read(key: _accessKey);
+      return token;
+    } catch (e) {
+      Dev.logError('Error loading access token: $e');
       return null;
     }
   }
 
-  /// Saves the PIN to secure storage
-  Future<void> savePin(String pin) async {
+  Future<String?> loadRefreshToken() async {
     try {
-      await _storage.write(key: _pinKey, value: pin);
-      _isHavePin = true;
+      final token = await _storage.read(key: _refreshKey);
+      return token;
     } catch (e) {
-      Dev.logError('Error saving PIN: $e');
+      Dev.logError('Error loading refresh token: $e');
+      return null;
     }
   }
 
-  /// Deletes the PIN from secure storage
-  Future<void> deletePin() async {
+  Future<void> clear() async {
     try {
-      await _storage.delete(key: _pinKey);
-      _isHavePin = false;
+      await _storage.delete(key: _accessKey);
+      await _storage.delete(key: _refreshKey);
+      _accessToken = null;
+      _refreshToken = null;
     } catch (e) {
-      Dev.logError('Error deleting PIN: $e');
+      Dev.logError('Error clearing tokens: $e');
     }
-  }
-
-  /// Checks if a PIN is set (not null or empty)
-  Future<bool> hasPin() async {
-    final pin = await loadPin();
-    return pin != null && pin.isNotEmpty;
-  }
-
-  /// Verifies if the provided PIN matches the stored one
-  Future<bool> verifyPin(String pin) async {
-    final storedPin = await loadPin();
-    return storedPin == pin;
   }
 }

@@ -1,5 +1,9 @@
+import 'dart:async';
+import 'dart:ui';
+
 import 'package:learning_go_test/generated/locale_keys.g.dart';
 import 'package:learning_go_test/src/core/services/local_storage.dart';
+import 'package:learning_go_test/src/core/services/secure_storage_servcies.dart';
 import 'package:learning_go_test/src/errors/error_response.dart';
 import 'package:learning_go_test/src/errors/exceptions/app_exception.dart';
 import 'package:learning_go_test/src/localization/app_languages.dart';
@@ -8,6 +12,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import '../../di/service_locator.dart';
 import '../../enums/user_auth.dart';
 
 class RemoteInterceptor extends Interceptor {
@@ -103,7 +108,7 @@ class RemoteInterceptor extends Interceptor {
     final customOptions = dioOption;
     customOptions.headers = headers;
     String? token;
-    token = storageProvider.userinformation.token;
+    token = sl<SecureStorageServices>().token;
 
     Dev.logLine('Token  $token');
     customOptions.headers['Authorization'] = 'Bearer $token';
@@ -155,3 +160,119 @@ class RemoteInterceptor extends Interceptor {
 }
 
 // interceptorLog(String message) => log('[INTERCEPTOR]=> $message');
+
+class SimpleAuthInterceptor extends Interceptor {
+  final Dio dio;
+  final Dio refreshDio; // no interceptors
+  final SecureStorageServices storage;
+  final VoidCallback onLogout;
+
+  Future<void>? _refreshing;
+
+  SimpleAuthInterceptor({
+    required this.dio,
+    required this.refreshDio,
+    required this.storage,
+    required this.onLogout,
+  });
+
+  bool _isRefreshCall(RequestOptions o) => o.path.contains('/auth/refresh');
+
+  Future<void> _setAuthHeader() async {
+    final token = storage.token;
+    if (token != null && token.isNotEmpty) {
+      dio.options.headers['Authorization'] = 'Bearer $token';
+    } else {
+      dio.options.headers.remove('Authorization');
+    }
+  }
+
+  Future<void> _refreshToken() async {
+    if (_refreshing != null) return _refreshing!;
+    final c = Completer<void>();
+    _refreshing = c.future;
+
+    () async {
+      try {
+        final rt = storage.refreshToken;
+        if (rt == null || rt.isEmpty) {
+          throw Exception('No refresh token');
+        }
+        final resp = await refreshDio.post(
+          '/auth/refresh',
+          data: {'refreshToken': rt},
+          options: Options(headers: {'Authorization': null}),
+        );
+        final newAccess = resp.data['access_token'] as String?;
+        final newRefresh = (resp.data['refresh_token'] as String?) ?? rt;
+        if (newAccess == null || newAccess.isEmpty) {
+          throw Exception('Invalid refresh response');
+        }
+        await storage.saveTokens(
+          accessToken: newAccess,
+          refreshToken: newRefresh,
+        );
+        await _setAuthHeader();
+        c.complete();
+      } catch (e) {
+        await storage.clear();
+        onLogout();
+        c.completeError(e);
+      } finally {
+        _refreshing = null;
+      }
+    }();
+
+    return _refreshing!;
+  }
+
+  @override
+  void onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
+    await _setAuthHeader();
+    handler.next(options);
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
+    final is401 = err.response?.statusCode == 401;
+    final req = err.requestOptions;
+
+    if (is401 && !_isRefreshCall(req)) {
+      try {
+        await _refreshToken();
+
+        final opts = Options(
+          method: req.method,
+          headers: req.headers,
+          responseType: req.responseType,
+          contentType: req.contentType,
+          sendTimeout: req.sendTimeout,
+          receiveTimeout: req.receiveTimeout,
+          followRedirects: req.followRedirects,
+          validateStatus: req.validateStatus,
+        );
+
+        final retry = await dio.request<dynamic>(
+          req.path,
+          data: req.data,
+          queryParameters: req.queryParameters,
+          options: opts,
+          cancelToken: req.cancelToken,
+          onReceiveProgress: req.onReceiveProgress,
+          onSendProgress: req.onSendProgress,
+        );
+        handler.resolve(retry);
+        return;
+      } catch (_) {
+        // refresh failed: session is cleared and logout fired by _refreshToken
+        handler.next(err); // bubble up original 401
+        return;
+      }
+    }
+
+    handler.next(err);
+  }
+}

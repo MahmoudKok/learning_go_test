@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:learning_go_test/src/core/enums/user_auth.dart';
 import 'package:flutter/widgets.dart';
@@ -16,9 +17,11 @@ abstract class HiveInitializer {
   static Future<void> initialize() async {
     Dev.logLine('HiveInitializer');
     try {
-      var documentsDirectory = await getApplicationDocumentsDirectory();
+      if (!kIsWeb) {
+        var documentsDirectory = await getApplicationDocumentsDirectory();
+        Hive.init(documentsDirectory.path);
+      }
 
-      Hive.init(documentsDirectory.path);
       bool isNotRegistered(int typeId) {
         return !Hive.isAdapterRegistered(typeId);
       }

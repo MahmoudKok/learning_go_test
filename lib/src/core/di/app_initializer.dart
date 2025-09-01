@@ -29,7 +29,7 @@ abstract class AppInitializer {
     //   hiveDir.deleteSync(recursive: true);
     // }
     // --- Init Firebase ---
-    Dev.logList(Firebase.apps, listName: 'Firebase');
+    // Dev.logList(Firebase.apps, listName: 'Firebase');
 
     // await Firebase.initializeApp(
     //   options: DefaultFirebaseOptions.currentPlatform,

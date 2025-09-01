@@ -10,67 +10,50 @@ class Dev {
   static const bool _isLoggerEnable = true;
 
   static void _output(String message) {
-    if (Platform.isIOS) {
-      log(message);
-    } else {
-      debugPrint(message);
-    }
+    debugPrint(message);
+    // if (Platform.isIOS) {
+    //   log(message);
+    // } else {
+    // }
   }
 
   static void logValue(dynamic value) {
     if (!_isLoggerEnable) return;
-    final message = Colorize("The value is : ******  $value  ******")
-        .magenta()
-        .red()
-        .bold()
-        .italic()
-        .initial;
+    final message = Colorize(
+      "The value is : ******  $value  ******",
+    ).magenta().red().bold().italic().initial;
     _output(message);
   }
 
   static void logError(dynamic value) {
     if (!_isLoggerEnable) return;
-    final message = Colorize("The Error is : ******  $value  ******")
-        .bgRed()
-        .white()
-        .bold()
-        .italic()
-        .initial;
+    final message = Colorize(
+      "The Error is : ******  $value  ******",
+    ).bgRed().white().bold().italic().initial;
     _output(message);
   }
 
   static void logLine(dynamic value) {
     if (!_isLoggerEnable) return;
-    final message = Colorize("******  $value  ******")
-        .bgGreen()
-        .black()
-        .reverse()
-        .bold()
-        .italic()
-        .initial;
+    final message = Colorize(
+      "******  $value  ******",
+    ).bgGreen().black().reverse().bold().italic().initial;
     _output(message);
   }
 
   static void logSuccess(dynamic value) {
     if (!_isLoggerEnable) return;
-    final message = Colorize("--------   Success with : $value   --------")
-        .green()
-        .reverse()
-        .bold()
-        .italic()
-        .initial;
+    final message = Colorize(
+      "--------   Success with : $value   --------",
+    ).green().reverse().bold().italic().initial;
     _output(message);
   }
 
   static void logFaild(dynamic value, dynamic reason) {
     if (!_isLoggerEnable) return;
-    final message =
-        Colorize("++++++++   Faild with : $value  ||| Reason: $reason ++++++++")
-            .bgRed()
-            .white()
-            .bold()
-            .italic()
-            .initial;
+    final message = Colorize(
+      "++++++++   Faild with : $value  ||| Reason: $reason ++++++++",
+    ).bgRed().white().bold().italic().initial;
     _output(message);
   }
 
@@ -99,18 +82,17 @@ class Dev {
   }) {
     if (!_isLoggerEnable) return;
     final part1 = Colorize("******  $tag: ").bgYellow().black().bold().initial;
-    final part2 = Colorize("$message >>>>> Error => $error  ******")
-        .bgLightRed()
-        .black()
-        .bold()
-        .initial;
+    final part2 = Colorize(
+      "$message >>>>> Error => $error  ******",
+    ).bgLightRed().black().bold().initial;
     _output(part1 + part2);
   }
 
   static void logDivider({dynamic symbole = '*', dynamic length = 20}) {
     if (!_isLoggerEnable) return;
-    final message =
-        Colorize("$symbole" * length).bgDarkGray().yellow().bold().initial;
+    final message = Colorize(
+      "$symbole" * length,
+    ).bgDarkGray().yellow().bold().initial;
     _output(message);
   }
 
@@ -127,8 +109,9 @@ class Dev {
     logLine('Map contains ${map.length} entries:');
     map.forEach((key, value) {
       final part1 = Colorize("Key: $key").bgBlue().white().bold().initial;
-      final part2 =
-          Colorize(" => Value: $value").bgYellow().black().bold().initial;
+      final part2 = Colorize(
+        " => Value: $value",
+      ).bgYellow().black().bold().initial;
       _output(part1 + part2);
     });
   }
@@ -141,21 +124,18 @@ class Dev {
     if (!_isLoggerEnable) return;
     logLine('Map contains ${map!.length} entries:');
     map.forEach((key, value) {
-      final part1 =
-          Colorize("******  $tag: ").bgYellow().black().bold().initial;
+      final part1 = Colorize(
+        "******  $tag: ",
+      ).bgYellow().black().bold().initial;
       final part2 = message != null
-          ? Colorize(" ${message.toString()}  ******")
-              .bgBlue()
-              .black()
-              .bold()
-              .initial
+          ? Colorize(
+              " ${message.toString()}  ******",
+            ).bgBlue().black().bold().initial
           : '';
       final part3 = Colorize("Key: $key").bgBlue().white().bold().initial;
-      final part4 = Colorize(" => Value: ${value.toString()}")
-          .black()
-          .bgCyan()
-          .bold()
-          .initial;
+      final part4 = Colorize(
+        " => Value: ${value.toString()}",
+      ).black().bgCyan().bold().initial;
       _output(part1 + part2 + part3 + part4);
     });
   }
@@ -163,19 +143,13 @@ class Dev {
   static void logErrorWithStackTrace(dynamic value, StackTrace stackTrace) {
     if (!_isLoggerEnable) return;
 
-    final errorMessage = Colorize("The Error is : ******  $value  ******")
-        .bgRed()
-        .black()
-        .bold()
-        .italic()
-        .initial;
+    final errorMessage = Colorize(
+      "The Error is : ******  $value  ******",
+    ).bgRed().black().bold().italic().initial;
 
-    final stackTraceMessage = Colorize("Stack Trace:\n$stackTrace")
-        .bgBlue()
-        .white()
-        .italic()
-        .bold()
-        .initial;
+    final stackTraceMessage = Colorize(
+      "Stack Trace:\n$stackTrace",
+    ).bgBlue().white().italic().bold().initial;
 
     _output(errorMessage);
     _output(stackTraceMessage);

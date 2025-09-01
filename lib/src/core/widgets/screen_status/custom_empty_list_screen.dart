@@ -15,7 +15,7 @@ class CustomEmptyListScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        AppImages.emptyScreen.asImageAssets(height: 100.h, width: 100.w),
+        // AppImages.emptyScreen.asImageAssets(height: 100.h, width: 100.w),
         16.verticalSpace,
         Text(title, style: textTheme.titleLarge),
       ],

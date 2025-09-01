@@ -6,6 +6,4 @@ abstract class InitAppEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class InitAppStarted extends InitAppEvent {
-  const InitAppStarted();
-}
+class LoadUserSettingsEvent extends InitAppEvent {}

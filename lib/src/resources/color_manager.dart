@@ -36,125 +36,80 @@ abstract class ColorsManager {
   Color get greyStroke;
   Color get shadow;
   Color get textFieldFill;
-
-  // Green colors
-  Color get forestGreen;
-  Color get tealGreen;
-  Color get sage;
-  Color get mediumSeaGreen;
-  Color get camouflageGreen;
-  Color get deepForestGreen;
 }
 
 class LightColorsManager extends ColorsManager {
   // Primary Colors
   @override
-  Color get primary => const Color(0xFF50705D); // Updated main primary color
+  Color get primary => const Color(0xFF3764E5); // الأزرق الأساسي
   @override
-  Color get lightPrimary =>
-      const Color(0xFF478b63); // Lighter shade for highlights
+  Color get lightPrimary => const Color(0xFF5A82EC); // أزرق أفتح للهوايات
   @override
-  Color get onPrimary => const Color(0xFFFFFFFF); // White text on primary
+  Color get onPrimary => const Color(0xFFFFFFFF); // أبيض فوق الأزرق
 
   @override
-  Color get onLightesPrimary => const Color(
-        0xFFFFFFFF,
-      ); // Use primary as text on lightest primary background
+  Color get onLightesPrimary => const Color(0xFFFFFFFF);
 
   @override
-  Color get darkPrimary => const Color(
-        0xFF1D1B20,
-      ).withValues(alpha: 0.9); // Updated Dark primary color
+  Color get darkPrimary => const Color(0xFF2C4EB8); // أزرق أغمق بدرجة للهيدر أو التمييز
 
   // Neutral & Core Colors
   @override
-  Color get white => const Color(0xFFFFFFFF); // Standard white
+  Color get white => const Color(0xFFFFFFFF);
   @override
-  Color get black => const Color(0xFF000000); // Standard black
+  Color get black => const Color(0xFF000000);
   @override
-  Color get dark => const Color(0xFF444444); // Slightly lighter dark shade
+  Color get dark => const Color(0xFF444444);
   @override
-  Color get darker =>
-      const Color(0xFF333333); // Dark grey for shadows or inactive items
+  Color get darker => const Color(0xFF333333);
   @override
-  Color get darkest =>
-      const Color(0xFF222222); // Deepest grey for primary text or shadows
+  Color get darkest => const Color(0xFF222222);
 
   // Secondary Colors
   @override
-  Color get scrim => const Color(0xFF111111)
-      .withValues(alpha: 0.8); // Slight opacity for dark overlays
+  Color get scrim => const Color(0xFF111111).withValues(alpha: 0.8);
 
   // Success & Error Colors
   @override
-  Color get green => const Color(0xFF4CAF50); // Standard success green
+  Color get green => const Color(0xFF45C73B); // الأخضر الأساسي
   @override
-  Color get lightGreen =>
-      const Color(0xFF81C784); // Light variant of green for highlights
+  Color get lightGreen => const Color(0xFF7EEA73); // أخضر فاتح للهوايات
   @override
-  Color get red => const Color(0xFFE53935); // Slightly muted error red
+  Color get red => const Color(0xFFE53935);
   @override
   Color get darkRed => const Color(0xFF7D0023);
 
   // Background & Surface Colors
   @override
-  Color get background => const Color(0xFFFAFAFA); // Soft light grey background
+  Color get background => const Color(0xFFFAFAFA);
   @override
-  Color get surface =>
-      const Color(0xFFFFFFFF); // White surface for cards, dialogs, etc.
+  Color get surface => const Color(0xFFFFFFFF);
 
   // Additional Shades
   @override
-  Color get lightGrey =>
-      const Color(0xFFE0E0E0); // Very light grey for subtle backgrounds
+  Color get lightGrey => const Color(0xFFE0E0E0);
   @override
-  Color get grey =>
-      const Color(0xFF9E9E9E); // Medium grey for icons, borders, etc.
+  Color get grey => const Color(0xFF9E9E9E);
   @override
-  Color get greyStroke => const Color(0xFFBDBDBD); // Border grey
+  Color get greyStroke => const Color(0xFFBDBDBD);
 
   // Shadows
   @override
-  Color get shadow => const Color(0xFF000000)
-      .withValues(alpha: 0.15); // Light grey with a soft look for input fields.
-// Light shadow for depth
-
+  Color get shadow => const Color(0xFF000000).withValues(alpha: 0.15);
   @override
   Color get textFieldFill => const Color(0xFFF2F2F2);
 
   @override
-  Color get lightSecondary => const Color(0xFF49654F);
-
+  Color get lightSecondary => const Color(0xFF5AB34D); // أخضر أفتح
   @override
   Color get onLightesSecondary => const Color(0xFF000000);
+  @override
+  Color get onSecondary => const Color(0xFFFFFFFF); // أبيض فوق الأخضر
+  @override
+  Color get secondary => const Color(0xFF45C73B); // الأخضر الأساسي
 
   @override
-  Color get onSecondary => const Color(0xFF000000);
-
-  @override
-  Color get secondary => const Color(0xFF49454F);
-
-  @override
-  Color get warning => const Color(0xFFffa100);
-  @override
-  Color get forestGreen => const Color(0xFF547460); // Light theme Forest Green
-
-  @override
-  Color get tealGreen => const Color(0xFF1F6761); // Light theme Teal Green
-
-  @override
-  Color get sage => const Color(0xFF5D806A); // Light theme Sage
-
-  @override
-  Color get mediumSeaGreen =>
-      const Color(0xFF258B4B); // Light theme Medium Sea Green
-
-  @override
-  Color get camouflageGreen =>
-      const Color(0xFF48855F); // Light theme Camouflage Green
-
-  @override
-  Color get deepForestGreen => const Color(0xFF2A3E31);
+  Color get warning => const Color(0xFFFFA100);
 
   @override
   Color get lightRed => const Color(0xFFE36961);
@@ -163,165 +118,76 @@ class LightColorsManager extends ColorsManager {
 class DarkColorsManager extends ColorsManager {
   // Primary Colors
   @override
-  Color get primary => const Color(0xFF50705D); // Updated main primary color
+  Color get primary => const Color(0xFF3764E5); // الأزرق الأساسي
   @override
-  Color get lightPrimary =>
-      const Color(0xFF478b63); // Lighter shade for highlights
+  Color get lightPrimary => const Color(0xFF5A82EC); // أزرق فاتح
   @override
-  Color get onPrimary => const Color(0xFFFFFFFF); // White text on primary
+  Color get onPrimary => const Color(0xFFFFFFFF);
 
   @override
-  Color get onLightesPrimary => const Color.fromARGB(
-        255,
-        237,
-        247,
-        255,
-      ); // Use primary as text on lightest primary background
+  Color get onLightesPrimary => const Color(0xFFEFF3FF); // أزرق فاتح جدًا
 
   @override
-  Color get darkPrimary => const Color(
-        0xFF1D1B20,
-      ).withValues(alpha: 0.9); // Updated Dark primary color
+  Color get darkPrimary => const Color(0xFF2C4EB8); // أزرق أغمق للـ dark theme
 
   // Neutral & Core Colors
   @override
-  Color get white =>
-      const Color(0xFFFFFFFF); // Standard white for text or accents
+  Color get white => const Color(0xFFFFFFFF);
   @override
-  Color get black =>
-      const Color(0xFF000000); // Standard black for text, borders
+  Color get black => const Color(0xFF000000);
   @override
-  Color get dark => const Color(0xFFCDCDCD); // Slightly muted dark grey
+  Color get dark => const Color(0xFFCDCDCD);
   @override
-  Color get darker => const Color(0xFFE1E1E1); // Lighter than `dark`
+  Color get darker => const Color(0xFFE1E1E1);
   @override
-  Color get darkest =>
-      const Color(0xFFECECEC); // Lightest grey for text or backgrounds
+  Color get darkest => const Color(0xFFECECEC);
 
   // Secondary Colors
   @override
-  Color get scrim => const Color(0xFF000000)
-      .withValues(alpha: 0.6); // Heavy opacity for dark backgrounds
+  Color get scrim => const Color(0xFF000000).withValues(alpha: 0.6);
 
   // Success & Error Colors
   @override
-  Color get green => const Color(
-        0xFF66BB6A,
-      ); // Slightly lighter green for better contrast in dark mode
+  Color get green => const Color(0xFF45C73B); // الأخضر الأساسي
   @override
-  Color get lightGreen =>
-      const Color(0xFFA5D6A7); // Very light green for subtle highlights
+  Color get lightGreen => const Color(0xFF7EEA73); // أخضر فاتح
   @override
-  Color get red => const Color(
-        0xFFE57373,
-      ); // Muted red to reduce harshness on dark backgrounds
+  Color get red => const Color(0xFFE57373);
   @override
   Color get darkRed => const Color(0xFF7D0023);
 
   // Background & Surface Colors
   @override
-  Color get background => const Color(0xFF121212); // Dark grey background
+  Color get background => const Color(0xFF121212);
   @override
-  Color get surface =>
-      const Color(0xFF1E1E1E); // Slightly lighter surface for cards
+  Color get surface => const Color(0xFF1E1E1E);
 
   // Additional Shades
   @override
-  Color get lightGrey =>
-      const Color(0xFF424242); // Dark grey for subtle accents
+  Color get lightGrey => const Color(0xFF424242);
   @override
-  Color get grey => const Color(0xFF9E9E9E); // Medium grey for icons, borders
+  Color get grey => const Color(0xFF9E9E9E);
   @override
-  Color get greyStroke => const Color(0xFF616161); // Darker grey for borders
+  Color get greyStroke => const Color(0xFF616161);
 
   // Shadows
   @override
-  Color get shadow =>
-      const Color(0xFF000000).withValues(alpha: 0.5); // Darker shadow for depth
+  Color get shadow => const Color(0xFF000000).withValues(alpha: 0.5);
   @override
   Color get textFieldFill => const Color(0xFF2C2C2C);
 
   @override
-  Color get lightSecondary => const Color(0xFF49654F);
-
+  Color get lightSecondary => const Color(0xFF5AB34D);
   @override
   Color get onLightesSecondary => const Color(0xFF000000);
+  @override
+  Color get onSecondary => const Color(0xFFFFFFFF); // أبيض فوق الأخضر
+  @override
+  Color get secondary => const Color(0xFF45C73B); // الأخضر الأساسي
 
   @override
-  Color get onSecondary => const Color(0xFF000000);
+  Color get warning => const Color(0xFFFFA100);
 
-  @override
-  Color get secondary => const Color(0xFF49454F);
-  @override
-  Color get warning => const Color(0xFFffa100);
-  // @override
-  // Color get forestGreen => const Color(0xFF547460); // Light theme Forest Green
-
-  // @override
-  // Color get tealGreen => const Color(0xFF1F6761); // Light theme Teal Green
-
-  // @override
-  // Color get sage => const Color(0xFF5D806A); // Light theme Sage
-
-  // @override
-  // Color get mediumSeaGreen =>
-  //     const Color(0xFF258B4B); // Light theme Medium Sea Green
-
-  // @override
-  // Color get camouflageGreen =>
-  //     const Color(0xFF48855F); // Light theme Camouflage Green
-
-  // @override
-  // Color get deepForestGreen =>
-  //     const Color(0xFF2A3E31); // Light theme Deep Forest Green
-
-  @override
-  Color get forestGreen => const Color.fromARGB(
-        255,
-        83,
-        108,
-        84,
-      ); // Dark theme Forest Green (darker version)
-
-  @override
-  Color get tealGreen => const Color.fromARGB(
-        255,
-        30,
-        111,
-        104,
-      ); // Dark theme Teal Green (darker version)
-
-  @override
-  Color get sage => const Color.fromARGB(
-        255,
-        87,
-        120,
-        104,
-      ); // Dark theme Sage (darker version)
-
-  @override
-  Color get mediumSeaGreen => const Color.fromARGB(
-        255,
-        54,
-        136,
-        95,
-      ); // Dark theme Medium Sea Green (darker version)
-
-  @override
-  Color get camouflageGreen => const Color.fromARGB(
-        255,
-        95,
-        156,
-        121,
-      ); // Dark theme Camouflage Green (darker version)
-
-  @override
-  Color get deepForestGreen => const Color.fromARGB(
-        255,
-        77,
-        100,
-        86,
-      ); // Dark theme Deep Forest Green (darker version)
   @override
   Color get lightRed => const Color(0xFFE36961);
 }

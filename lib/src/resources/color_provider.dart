@@ -9,8 +9,8 @@ class ColorProvider extends ColorsManager {
 
   ColorsManager get _currentManager =>
       AppThemes.currentTheme.brightness == Brightness.light
-          ? _lightColorsManager
-          : _darkColorsManager;
+      ? _lightColorsManager
+      : _darkColorsManager;
 
   @override
   Color get primary => _currentManager.primary;
@@ -92,24 +92,6 @@ class ColorProvider extends ColorsManager {
 
   @override
   Color get warning => _currentManager.warning;
-
-  @override
-  Color get camouflageGreen => _currentManager.camouflageGreen;
-
-  @override
-  Color get deepForestGreen => _currentManager.deepForestGreen;
-
-  @override
-  Color get forestGreen => _currentManager.forestGreen;
-
-  @override
-  Color get mediumSeaGreen => _currentManager.mediumSeaGreen;
-
-  @override
-  Color get sage => _currentManager.sage;
-
-  @override
-  Color get tealGreen => _currentManager.tealGreen;
 
   @override
   Color get lightRed => _currentManager.lightRed;

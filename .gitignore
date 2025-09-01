@@ -127,3 +127,5 @@ app.*.symbols
 lib/generated/
 *.g.dart
 *.config.dart
+#py
+clean_arctheture_helper.py

@@ -3,15 +3,24 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learning_go_test/src/core/di/app_initializer.dart';
 
 import 'app/features/init_app/presentation/bloc/init_app_bloc.dart';
 import 'generated/codegen_loader.g.dart';
+import 'src/core/di/service_locator.dart';
 import 'src/core/enums/app_theme_types.dart';
 import 'src/core/router/app_router.dart';
 import 'src/resources/theme_manager.dart';
 
-void main() {
-  runApp(const MainApp());
+void main() async {
+  await AppInitializer.init();
+  runApp(
+    BlocProvider<InitAppBloc>(
+      create: (context) => sl<InitAppBloc>()..add(LoadUserSettingsEvent()),
+      child: const MainApp(),
+    ),
+    // ),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -61,7 +70,7 @@ class MainApp extends StatelessWidget {
                   themeMode: state.userSettings.theme == AppThemeType.light
                       ? ThemeMode.light
                       : ThemeMode.dark,
-                  title: 'Alfares Farm',
+                  title: 'Learning-Go',
                 ),
               );
             },
