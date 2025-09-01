@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:learning_go_test/src/core/data/models/user_local_settings.dart';
 import 'package:learning_go_test/src/core/enums/user_auth.dart';
 import 'package:learning_go_test/src/core/router/app_router.dart';
 import 'package:learning_go_test/src/core/router/app_routes.dart';
@@ -53,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
           }
         },
         child: Scaffold(
-          backgroundColor: colorProvider.white,
+          backgroundColor: colorProvider.background,
           body: SafeArea(
             child: Center(
               child: Column(

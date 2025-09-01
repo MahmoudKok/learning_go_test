@@ -1,6 +1,5 @@
 import 'package:injectable/injectable.dart';
 import 'package:learning_go_test/src/core/Api/api_response.dart';
-import 'package:learning_go_test/src/core/services/search_services/search_products_services.dart';
 
 import '../../../../../../src/core/di/service_locator.dart';
 import '../../../../../../src/core/services/product_services/product_services.dart';

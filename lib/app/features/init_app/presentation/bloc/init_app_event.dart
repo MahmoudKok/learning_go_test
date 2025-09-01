@@ -7,3 +7,5 @@ abstract class InitAppEvent extends Equatable {
 }
 
 class LoadUserSettingsEvent extends InitAppEvent {}
+
+class ChangeAppThemeEvent extends InitAppEvent {}

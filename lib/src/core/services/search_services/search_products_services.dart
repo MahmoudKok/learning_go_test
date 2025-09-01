@@ -2,10 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 
-import '../../../../app/features/home/data/models/product_model.dart';
 import '../../../../app/features/home/data/models/products_response.dart';
 import '../../Api/api_endpoints.dart';
-import '../../Api/api_response.dart';
 import 'package:retrofit/error_logger.dart';
 part 'search_products_services.g.dart';
 

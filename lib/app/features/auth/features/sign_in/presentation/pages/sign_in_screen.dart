@@ -25,7 +25,7 @@ class SignInScreen extends StatelessWidget {
     return BlocProvider(
       create: (_) => sl<SignInBloc>(),
       child: Scaffold(
-        backgroundColor: colorProvider.white,
+        backgroundColor: colorProvider.background,
         body: Stack(
           children: [
             // blobs background

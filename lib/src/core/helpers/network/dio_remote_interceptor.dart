@@ -110,7 +110,7 @@ class RemoteInterceptor extends Interceptor {
     String? token;
     token = sl<SecureStorageServices>().token;
 
-    Dev.logLine('Token  $token');
+    // Dev.logLine('Token  $token');
     customOptions.headers['Authorization'] = 'Bearer $token';
     List<ConnectivityResult> connectivityResult = await Connectivity()
         .checkConnectivity();

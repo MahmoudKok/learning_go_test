@@ -1,5 +1,3 @@
-import 'dart:developer';
-import 'dart:io';
 
 import 'package:colorize/colorize.dart';
 import 'package:flutter/cupertino.dart';

@@ -8,7 +8,7 @@ class BaseUrls {
   static String networkImagebaseUrl = '';
   static init() {
     baseUrl = dotenv.get(DotenvKeys.baseUrl);
-    Dev.logLine('mnor $baseUrl');
+
     networkImagebaseUrl = dotenv.get(DotenvKeys.imageBaseUrl);
   }
 }

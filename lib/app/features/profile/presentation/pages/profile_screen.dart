@@ -8,16 +8,14 @@ import 'package:learning_go_test/src/core/widgets/defualt_button.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../src/core/di/service_locator.dart';
+import '../../../../../src/core/enums/app_theme_types.dart';
 import '../../../../../src/core/enums/general_enums.dart';
 import '../../../../../src/logger/dev_logger.dart';
 import '../../../../../src/resources/color_provider.dart';
+import '../../../../../src/resources/theme_manager.dart';
+import '../../../init_app/presentation/bloc/init_app_bloc.dart';
 import '../../data/models/user_model.dart';
 import '../bloc/profile_bloc.dart';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -110,9 +108,27 @@ class ProfileScreen extends StatelessWidget {
                             ),
                           ),
                           SizedBox(width: 40.w),
+                          IconButton(
+                            icon: Icon(
+                              context
+                                          .read<InitAppBloc>()
+                                          .state
+                                          .userSettings
+                                          .theme ==
+                                      AppThemeType.dark
+                                  ? Icons.light_mode
+                                  : Icons.dark_mode,
+                              color: colorProvider.darkest,
+                              size: 15.sp,
+                            ),
+                            onPressed: () {
+                              context.read<InitAppBloc>().add(
+                                ChangeAppThemeEvent(),
+                              );
+                            },
+                          ),
                         ],
                       ),
-
                       24.verticalSpace,
 
                       // header card

@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:learning_go_test/src/core/extensions/assets_extension.dart';
-import 'package:learning_go_test/src/resources/assets_manager.dart';
 
 class EmptyScreen extends StatelessWidget {
   final String? text;

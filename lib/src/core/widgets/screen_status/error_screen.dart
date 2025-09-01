@@ -1,9 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:learning_go_test/src/core/constants/messages/general_messages.dart';
 import 'package:learning_go_test/src/core/enums/roundnes_level.dart';
-import 'package:learning_go_test/src/core/extensions/assets_extension.dart';
 import 'package:learning_go_test/src/core/extensions/widget_extensions.dart';
-import 'package:learning_go_test/src/resources/assets_manager.dart';
 import 'package:learning_go_test/src/resources/color_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';

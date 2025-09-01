@@ -1,8 +1,6 @@
-import 'package:learning_go_test/src/core/extensions/assets_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../resources/assets_manager.dart';
 
 class CustomEmptyListScreen extends StatelessWidget {
   const CustomEmptyListScreen({super.key, required this.title});

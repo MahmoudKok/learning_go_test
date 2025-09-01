@@ -1,5 +1,4 @@
 import 'package:learning_go_test/src/core/extensions/numbers_extension.dart';
-import 'package:learning_go_test/src/localization/app_languages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

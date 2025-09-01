@@ -11,6 +11,8 @@ import '../../../../../src/core/enums/general_enums.dart';
 import '../../../../../src/resources/color_provider.dart';
 import '../../data/models/product_model.dart';
 import '../bloc/home_bloc.dart';
+part '../widgets/product_card.dart';
+part '../widgets/loading_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,7 +27,7 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: colorProvider.background,
         appBar: AppBar(
-          backgroundColor: colorProvider.white,
+          backgroundColor: colorProvider.surface,
           elevation: 0,
           title: Text(
             'Products',
@@ -40,13 +42,13 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {
                   AppRouter.getRouter.push(AppRoutes.searchProducts);
                 },
-                icon: const Icon(Icons.search),
+                icon: Icon(Icons.search, color: colorProvider.darkest),
               ),
               IconButton(
                 onPressed: () {
                   AppRouter.getRouter.push(AppRoutes.profile);
                 },
-                icon: const Icon(Icons.person),
+                icon: Icon(Icons.person, color: colorProvider.darkest),
               ),
             ],
           ),
@@ -55,10 +57,6 @@ class HomeScreen extends StatelessWidget {
           builder: (context, state) {
             final isInitialLoading =
                 state.status == RequestState.loading && state.products.isEmpty;
-            final isPaginating =
-                state.status == RequestState.loading &&
-                state.products.isNotEmpty &&
-                state.hasMore;
 
             final products = state.products.isNotEmpty
                 ? state.products
@@ -166,157 +164,4 @@ class HomeScreen extends StatelessWidget {
     thumbnail: "",
     images: [],
   );
-}
-
-class _ProductRowCard extends StatelessWidget {
-  const _ProductRowCard({
-    required this.product,
-    required this.textTheme,
-    required this.colorProvider,
-  });
-
-  final ProductModel product;
-  final TextTheme textTheme;
-  final ColorProvider colorProvider;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      hoverColor: Colors.transparent,
-      onTap: () {
-        AppRouter.getRouter.push(
-          AppRoutes.productDetails,
-          extra: {'id': product.id, "thumbnail": product.thumbnail},
-        );
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: colorProvider.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: colorProvider.shadow,
-              blurRadius: 10,
-              offset: const Offset(0, 6),
-            ),
-          ],
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Product image
-            Hero(
-              tag: "product_${product.id}",
-              child: ClipRRect(
-                borderRadius: const BorderRadius.horizontal(
-                  left: Radius.circular(16),
-                ),
-                child: Image.network(
-                  product.thumbnail,
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) => Container(
-                    width: 100,
-                    height: 100,
-                    color: colorProvider.lightGrey,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(width: 12),
-            // Info
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 14,
-                  horizontal: 2,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Brand
-                    Text(
-                      product.brand ?? '',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: textTheme.displaySmall!.copyWith(
-                        color: colorProvider.grey,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    // Title
-                    Text(
-                      product.title,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: textTheme.bodyLarge!.copyWith(
-                        color: colorProvider.darkest,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    // Price, Rating, Stock
-                    Row(
-                      children: [
-                        Text(
-                          '\$${product.price.toStringAsFixed(2)}',
-                          style: textTheme.titleLarge!.copyWith(
-                            color: colorProvider.primary,
-                          ),
-                        ),
-                        const Spacer(),
-                        const Icon(Icons.star, size: 16, color: Colors.amber),
-                        const SizedBox(width: 4),
-                        Text(
-                          product.rating.toStringAsFixed(1),
-                          style: textTheme.bodyMedium!.copyWith(
-                            color: colorProvider.dark,
-                          ),
-                        ),
-                        const SizedBox(width: 4),
-                      ],
-                    ),
-                    const SizedBox(height: 6),
-                    // Availability
-                    Text(
-                      product.availabilityStatus,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: textTheme.displaySmall!.copyWith(
-                        color: product.stock > 0
-                            ? colorProvider.green
-                            : colorProvider.red,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _LoadingCard extends StatelessWidget {
-  const _LoadingCard({required this.textTheme, required this.colorProvider});
-  final TextTheme textTheme;
-  final ColorProvider colorProvider;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        width: 30.w,
-        height: 30.h,
-        child: Center(
-          child: CircularProgressIndicator(
-            strokeWidth: 2,
-            valueColor: AlwaysStoppedAnimation<Color>(colorProvider.primary),
-          ),
-        ),
-      ),
-    );
-  }
 }

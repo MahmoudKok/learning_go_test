@@ -6,8 +6,6 @@ import 'package:retrofit/http.dart';
 import 'package:retrofit/error_logger.dart';
 
 import '../../../../app/features/auth/features/sign_in/data/models/sign_in_model.dart';
-import '../../../../app/features/auth/features/sign_in/domain/entities/params/sign_in_params.dart';
-import '../../Api/api_response.dart';
 
 part 'auth_services.g.dart';
 
