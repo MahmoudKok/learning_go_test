@@ -41,7 +41,7 @@ class _ProductRowCard extends StatelessWidget {
               tag: "product_${product.id}",
               child: ClipRRect(
                 borderRadius: const BorderRadius.horizontal(
-                  left: Radius.circular(16),
+                  left: Radius.circular(20),
                 ),
                 child: Image.network(
                   product.thumbnail,
